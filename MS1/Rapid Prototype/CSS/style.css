@@ -1,0 +1,15 @@
+
+#map {
+    height: 600px;
+    width: 800px;
+  }
+  html, body {
+    height: 100%;
+    margin: 5px;
+    padding: 0;
+  }
+
+  .preMap {
+    font-family: sans-serif;
+    padding: 5px;
+  }

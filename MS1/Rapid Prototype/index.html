@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <title>calmRunter</title>
+    <script src="js/script.js" type="text/javascript"></script>
+    <link href="css/style.css" rel="stylesheet" type="text/css">
+  </head>
+
+  <body>
+    <div class="preMap">
+      <b>Wähle Lernzeit: </b>
+      <select id="end">
+        <option value="0">---</option>
+        <option value="30">30 Minuten</option>
+        <option value="60">60 Minuten</option>
+        <option value="90">90 Minuten</option>
+        <option value="120">120 Minuten</option>
+        <option value="150">150 Minuten</option>
+        <option value="180">180 Minuten</option>
+      </select>
+    </div>
+    <div id="map"></div>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCvZh78kGq8cPD0mFvzVGs2YJpnjuWyB-k&libraries=places&callback=initMap" async defer>
+    </script>
+  </body>
+</html>
