@@ -108,7 +108,7 @@ function initMap() {
   //Listener for changing the selection field.
   document.getElementById('end').addEventListener('change', onChangeHandler);
 
-  //
+  //Calculates a Route for Walking.
   function calculateAndDisplayRoute(myPosition, location, directionsService, directionsDisplay){
       directionsService.route({
         origin: myPosition,
