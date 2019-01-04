@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+tools:context="com.huntschalehmanneis2018.calmrunter.Homescreen"
+tools:showIn="@layout/activity_homescreen">
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_centerInParent="true"
+    android:padding="15dp"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/homescreen_findGameContainer"
+        android:layout_width="wrap_content"
+        android:layout_height="100dp"
+        android:layout_marginTop="25dp"
+        android:clickable="true"
+        android:focusable="true">
+
+        <ImageView
+            android:id="@+id/banner_img2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@color/colorPrimaryDark"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:id="@+id/banner_text1"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerVertical="true"
+            android:gravity="bottom|start"
+            android:padding="4dp"
+            android:paddingEnd="16dp"
+            android:paddingStart="16dp"
+            android:text="Starten"
+            android:textAlignment="gravity"
+            android:textAllCaps="true"
+            android:textColor="@android:color/white"
+            android:textSize="20sp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/homescreen_createEventContainer"
+        android:layout_width="wrap_content"
+        android:layout_height="100dp"
+        android:layout_marginTop="40dp"
+        android:clickable="true"
+        android:focusable="true">
+
+        <ImageView
+            android:id="@+id/banner_image2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@color/colorPrimaryDark"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:id="@+id/banner_text2"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerVertical="true"
+             android:gravity="bottom|end"
+            android:padding="4dp"
+            android:paddingEnd="16dp"
+            android:paddingStart="16dp"
+            android:text="Karteikarten"
+            android:textAlignment="gravity"
+            android:textAllCaps="true"
+            android:textColor="@android:color/white"
+            android:textSize="20sp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/homescreen_leagueContainer"
+        android:layout_width="wrap_content"
+        android:layout_height="100dp"
+        android:layout_marginTop="40dp"
+        android:clickable="true"
+        android:focusable="true">
+
+        <ImageView
+            android:id="@+id/banner_image3"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:drawingCacheQuality="auto"
+            android:scaleType="centerCrop"
+            android:src="@color/colorPrimaryDark"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:id="@+id/banner_text3"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerVertical="true"
+            android:gravity="bottom|start"
+            android:padding="4dp"
+            android:paddingEnd="16dp"
+            android:paddingStart="16dp"
+            android:text="Mein Profil"
+            android:textAlignment="gravity"
+            android:textAllCaps="true"
+            android:textColor="@android:color/white"
+            android:textSize="20sp" />
+    </RelativeLayout>
+
+</LinearLayout>
+
+</RelativeLayout>
+
