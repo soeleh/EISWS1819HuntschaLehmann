@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/nav_myProfile"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="@string/myProfile" />
+
+        <item
+            android:id="@+id/nav_createKarteikartenstapel"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="@string/create_new_Karteikartenstapel" />
+
+        <item
+            android:id="@+id/nav_favorites"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="@string/favorites" />
+
+        <item
+            android:id="@+id/nav_statistics"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="@string/statistics" />
+        <item
+            android:id="@+id/nav_settings"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="@string/settings" />
+
+        <item
+            android:id="@+id/nav_faq"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="@string/faq" />
+
+        <item
+            android:id="@+id/nav_developer"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="@string/developers" />
+
+        <item
+            android:id="@+id/nav_data_privacy"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="@string/data_privacy" />
+
+        <item
+            android:id="@+id/nav_impressum"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="@string/impressum" />
+    </group>
+
+</menu>

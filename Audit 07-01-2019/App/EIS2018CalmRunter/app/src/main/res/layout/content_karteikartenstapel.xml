@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/nameDerLerneinheit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView" />
+
+    <TextView
+
+        android:id="@+id/aktuelleFrage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/aktuelleAntwort"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView" />
+
+    <Button
+        android:id="@+id/weiter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Antwort Anzeigen" />
+
+    <Button
+        android:id="@+id/beenden"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Verlassen" />
+</android.support.constraint.ConstraintLayout>
