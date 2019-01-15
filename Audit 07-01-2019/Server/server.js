@@ -1,29 +1,33 @@
 //Module
-var bodyParser = require('body-parser');
-var express = require('express');
-var mongoose = require('mongoose');
+global.express = require('express');
+global.app = express();
+global.bodyParser = require('body-parser');
+global.mongoose = require('mongoose');
 
-var app = express();
-app.use(bodyParser.json());
-
-var config = require('./config/app.config.js');
-
-var server = require('http').Server(app);
-
-//Port
-var port = process.env.prodPort || 2019;
-app.set('port', port);
+const nutzerRoute = require('./routes/nutzer.js');
+const kartenRoute = require('./routes/karteikarten.js');
+const stapelRoute = require('./routes/karteikartenstapel.js');
 
 //Middleware Anbindung
-mongoose.connect('mongodb://localhost/calmRunter', { useNewUrlParser: true });
+mongoose.connect(`mongodb://${Team21}:${chr1sundSoeren}@ds255754.mlab.com:55754/${calmrunter}`, { useNewUrlParser: true });
 mongoose.connection.once('open', function(){
   console.log('MongoDB verfügbar');
 });
-var db = mongoose.connection;
+const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 
-app.get('/', function(req, res){
-  res.send('ok');
-});
+//Initialisierung
+app.use(bodyParser.json());
 
-server.listen(app.get('port'));
+app.use(nutzerRoute);
+nutzerRoute.init(app);
+
+app.use(kartenRoute);
+kartenRoute.init(app);
+
+app.use(stapelRoute);
+stapelRoute.init(app);
+
+//Port
+const port = process.env.port || 2019;
+app.listen(port, console.info(`Server has started on ${port}`));
