@@ -27,12 +27,13 @@ router.get('/nutzer/:name', function(req, res){
 
 //Erstellen eines Nutzers
 router.post('/nutzer', function(req, res){
-  if(!req.body || !req.params.name){
-    return res.status(400).send("Request body is missing or Missing URL parameter: name");
+  if(!req.body){
+    return res.status(400).send("Request body is missing");
   }
   else{
     let model = new nutzerModel(req.body);
     model.save();
+    return res.status(200).json({success:"true"});
   }
 });
 
@@ -54,7 +55,7 @@ router.put('/nutzer/:name', function(req, res){
 });
 
 //Entfernen eines Nutzers nach Name
-router.delete('/nutzer/:name)', function(req, res){
+router.delete('/nutzer/:name', function(req, res){
   if(!req.params.name){
     return res.status(400).send("Missing URL parameter: name");
   }

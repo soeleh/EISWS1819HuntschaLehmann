@@ -28,7 +28,7 @@ router.get('/stapel/:id', function(req, res){
 
 //Erstellen eines Karteikartenstapels
 router.post('/stapel', function(req, res){
-  if(!req.body || !req.params.id){
+  if(!req.body){
     return res.status(400).send("Request body is missing or Missing URL parameter: ID");
   }
   else{
@@ -49,13 +49,13 @@ router.put('/stapel/:id', function(req, res){
       }
       else{
         //Berechnen der neuen Dauer
-        let x = 0, y = 0;
+        let x = 0;
         for(var i = 0; i < stapel.karteikarten.length; i++){ //Für jede ID in Karteikarte-Attribut von Stapel
           kartenModel.find({"id": stapel.karteikarten.id[i]}, function(err, karte){
-            y += karte.laenge;
+            x+= karte.laenge;
           });
         }
-        stapel.lerndauer = y; //Gesamtlaenge wird neu gespeichert
+        stapel.lerndauer = x; //Gesamtlaenge wird neu gespeichert
         return res.status(200).json({success:"true", stapel: stapel});
       }
     });
@@ -63,7 +63,7 @@ router.put('/stapel/:id', function(req, res){
 });
 
 //Entfernen eines Karteikartenstapels nach ID
-router.delete('/stapel/:id)', function(req, res){
+router.delete('/stapel/:id', function(req, res){
   if(!req.params.id){
     return res.status(400).send("Missing URL parameter: ID");
   }

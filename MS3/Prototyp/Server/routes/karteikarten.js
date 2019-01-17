@@ -27,7 +27,7 @@ router.get('/karteikarten/:id', function(req, res){
 
 //Erstellen einer Karteikarte
 router.post('/karteikarten', function(req, res){
-  if(!req.body || !req.params.id){
+  if(!req.body){
     return res.status(400).send("Request body is missing or Missing URL parameter: ID");
   }
   else{
@@ -38,7 +38,7 @@ router.post('/karteikarten', function(req, res){
 
 //Ändern einer Karteikarte nach ID
 router.put('/karteikarten/:id', function(req, res){
-  if(!req.body || !req.params.id){
+  if(!req.body){
     return res.status(400).send("Request body is missing or Missing URL parameter: ID");
   }
   else{
@@ -54,7 +54,7 @@ router.put('/karteikarten/:id', function(req, res){
 });
 
 //Entfernen einer Karteikarte nach ID
-router.delete('/karteikarten/:id)', function(req, res){
+router.delete('/karteikarten/:id', function(req, res){
   if(!req.params.id){
     return res.status(400).send("Missing URL parameter: ID");
   }
