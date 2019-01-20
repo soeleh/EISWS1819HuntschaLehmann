@@ -107,6 +107,7 @@ public class GoogleMapsActivity extends AppCompatActivity implements
         myGoogleMap.setOnMyLocationClickListener(this);
         myGoogleMap.setOnMarkerClickListener(this);
 
+
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
                 != PackageManager.PERMISSION_GRANTED) {
             // Permission to access the location is missing.
@@ -138,9 +139,9 @@ public class GoogleMapsActivity extends AppCompatActivity implements
         }
         else {
             locationServicesCheck(myLocationManager);
-            //if(locationServicesCheck(myLocationManager)){
-            //   enableMyLocation();
-            //}
+            if(locationServicesCheck(myLocationManager)){
+               enableMyLocation();
+            }
         }
     }
 

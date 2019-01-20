@@ -1,8 +1,11 @@
 package com.huntschalehmann2018.eis2018calmrunter.Screen;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.huntschalehmann2018.eis2018calmrunter.R;
@@ -39,12 +42,32 @@ public class StartedActivity extends AppCompatActivity{
         TextView nameDerLerneinheit = (TextView) findViewById(R.id.nameDerLerneinheit);
         for(int y=0; y<=karteikartenstapel1.getKarteikartenlistenLaenge(); y++){
             TextView frage = (TextView) findViewById(R.id.aktuelleFrage);
-            TextView antwort = (TextView) findViewById(R.id.aktuelleAntwort);
 /*
             String stringantwort = karteikartenstapel1.toString()
 
             frage.setText(karteikartenstapel1.get(y));
             */
         }
+        final Button zeigeRueckseite = (Button) findViewById(R.id.weiter);
+
+
+        zeigeRueckseite.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                TextView tv = (TextView) findViewById(R.id.aktuelleFrage);
+                tv.setText("Programiersprache, Betriebssystem, Prozessorarchitektur und Programmiersprache");
+                zeigeRueckseite.setText("Nächste Karte");
+            }
+        });
+
+
+
+        Button verlassen = (Button) findViewById(R.id.beenden);
+        verlassen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(StartedActivity.this, Homescreen.class));
+            }
+        });
     }
 }

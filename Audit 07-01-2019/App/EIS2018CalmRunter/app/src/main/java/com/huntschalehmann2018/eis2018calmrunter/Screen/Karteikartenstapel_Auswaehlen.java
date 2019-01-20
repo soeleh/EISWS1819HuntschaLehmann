@@ -41,7 +41,7 @@ public class Karteikartenstapel_Auswaehlen extends AppCompatActivity
     private ListView lv;
 
     // URL to get karteikartennstapel JSON
-    private static String url = "localhost:2019/calmrunter/";
+   // private static String url = "localhost:2019/calmrunter/";
 
     ArrayList<HashMap<String, String>> Karteikartenliste;
 
@@ -61,9 +61,9 @@ public class Karteikartenstapel_Auswaehlen extends AppCompatActivity
 
         Karteikartenliste = new ArrayList<>();
 
-        lv = (ListView) findViewById(R.id.list);
+        //lv = (ListView) findViewById(R.id.list);
 
-        new GetKarteikartenstapel().execute();
+        //new GetKarteikartenstapel().execute();
 
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
@@ -175,6 +175,9 @@ public class Karteikartenstapel_Auswaehlen extends AppCompatActivity
         }
 
         @Override
+        protected Void doInBackground(Void... arg0) { return null; };
+/*
+        @Override
         protected Void doInBackground(Void... arg0) {
             HttpHandler sh = new HttpHandler();
 
@@ -249,6 +252,7 @@ public class Karteikartenstapel_Auswaehlen extends AppCompatActivity
 
             return null;
         }
+        */
 
         @Override
         protected void onPostExecute(Void result) {
