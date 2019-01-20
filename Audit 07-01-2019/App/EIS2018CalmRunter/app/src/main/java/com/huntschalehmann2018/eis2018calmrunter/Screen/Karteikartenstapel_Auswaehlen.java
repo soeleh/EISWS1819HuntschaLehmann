@@ -1,24 +1,49 @@
 package com.huntschalehmann2018.eis2018calmrunter.Screen;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.ListAdapter;
+import android.widget.ListView;
+import android.widget.SimpleAdapter;
+import android.widget.Toast;
 
 import com.huntschalehmann2018.eis2018calmrunter.R;
+import com.huntschalehmann2018.eis2018calmrunter.Util.HttpHandler;
 
-import java.util.Date;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+
+//für json anbindung
 
 public class Karteikartenstapel_Auswaehlen extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    private String TAG = Karteikartenstapel_Auswaehlen.class.getSimpleName();
+
+    private ProgressDialog pDialog;
+    private ListView lv;
+
+    // URL to get karteikartennstapel JSON
+    private static String url = "localhost:2019/calmrunter/";
+
+    ArrayList<HashMap<String, String>> Karteikartenliste;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +57,14 @@ public class Karteikartenstapel_Auswaehlen extends AppCompatActivity
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
+
+
+        Karteikartenliste = new ArrayList<>();
+
+        lv = (ListView) findViewById(R.id.list);
+
+        new GetKarteikartenstapel().execute();
+
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
@@ -124,4 +157,118 @@ public class Karteikartenstapel_Auswaehlen extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
+    /**
+     * Async task class to get json by making HTTP call
+     */
+    private class GetKarteikartenstapel extends AsyncTask<Void, Void, Void> {
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            // Showing progress dialog
+            pDialog = new ProgressDialog(Karteikartenstapel_Auswaehlen.this);
+            pDialog.setMessage("Please wait...");
+            pDialog.setCancelable(false);
+            pDialog.show();
+
+        }
+
+        @Override
+        protected Void doInBackground(Void... arg0) {
+            HttpHandler sh = new HttpHandler();
+
+            // Making a request to url and getting response
+            String jsonStr = sh.makeServiceCall(url);
+
+            Log.e(TAG, "Response from url: " + jsonStr);
+
+            if (jsonStr != null) {
+                try {
+                    JSONObject jsonObj = new JSONObject(jsonStr);
+
+                    // Getting JSON Array node
+                    JSONArray karteikartenstapel = jsonObj.getJSONArray("karteikartenstapel");
+
+                    // looping through All Karteikartenstapel
+                    for (int i = 0; i < karteikartenstapel.length(); i++) {
+                        JSONObject c = karteikartenstapel.getJSONObject(i);
+
+                        String id = c.getString("id");
+                        String name = c.getString("name");
+                        String amountkarteikarten = c.getString("anzahlKarten");
+                        String learnduration = c.getString("lerndauer");
+                        String tags = c.getString("tag");
+                        String kategory = c.getString("kategorie");
+                        String studienfach = c.getString("studienfach");
+                        String modul = c.getString("modul");
+
+                        // tmp hash map for single karteikarte
+                        HashMap<String, String> karteikarte = new HashMap<>();
+
+                        // adding each child node to HashMap key => value
+                        karteikarte.put("id", id);
+                        karteikarte.put("ersteller", name);
+                        karteikarte.put("vorderseite", amountkarteikarten);
+                        karteikarte.put("Lerndauer", learnduration);
+                        karteikarte.put("tag", tags);
+                        karteikarte.put("studienfach", studienfach);
+                        karteikarte.put("kategorie", kategory);
+                        karteikarte.put("modul", modul);
+
+
+                        // adding contact to contact list
+                        //Karteikartenstapel_Auswaehlen.add(karteikarte);
+                    }
+                } catch (final JSONException e) {
+                    Log.e(TAG, "Json parsing error: " + e.getMessage());
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            Toast.makeText(getApplicationContext(),
+                                    "Json parsing error: " + e.getMessage(),
+                                    Toast.LENGTH_LONG)
+                                    .show();
+                        }
+                    });
+
+                }
+            } else {
+                Log.e(TAG, "Couldn't get json from server.");
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Toast.makeText(getApplicationContext(),
+                                "Couldn't get json from server. Check LogCat for possible errors!",
+                                Toast.LENGTH_LONG)
+                                .show();
+                    }
+                });
+
+            }
+
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void result) {
+            super.onPostExecute(result);
+            // Dismiss the progress dialog
+            if (pDialog.isShowing())
+                pDialog.dismiss();
+            /**
+             * Updating parsed JSON data into ListView
+             * */
+            ListAdapter adapter = new SimpleAdapter(
+                    Karteikartenstapel_Auswaehlen.this, Karteikartenliste,
+                    R.layout.item_list, new String[]{"modul", "ersteller",
+                    "lerndauer"}, new int[]{R.id.modul,
+                    R.id.ersteller, R.id.dauer});
+
+            lv.setAdapter(adapter);
+        }
+
+    }
 }
+
+
