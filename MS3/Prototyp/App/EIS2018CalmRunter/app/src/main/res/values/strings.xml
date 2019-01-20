@@ -1,0 +1,46 @@
+<resources>
+    <string name="app_name">CalmRunter</string>
+    <string name="navigation_drawer_open">Öffne Navigation</string>
+    <string name="navigation_drawer_close">Schließe Nagivation</string>
+    <string name="nav_header_title">Sören Lehmann</string>
+    <string name="nav_header_subtitle">sören.lehmann@gmail.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Einstellungen</string>
+
+    <string name="myProfile">Mein Profil</string>
+    <string name="Karteikarten">Karteikarten</string>
+    <string name="startLerneinheit">Lerneinheit starten</string>
+
+    <string name="create_new_Karteikartenstapel">Neuen Karteistapel anlegen</string>
+    <string name="statistics">Statistiken</string>
+    <string name="settings">Einstellungen</string>
+    <string name="developers">Entwickler</string>
+    <string name="impressum">Impressum</string>
+    <string name="favorites">Favoriten</string>
+    <string name="faq">FAQ</string>
+    <string name="data_privacy">Datenschutzerklärung</string>
+
+    <string name="name_of_learnkarte1">CGA</string>
+    <string name="name_of_learnkarte2">EIS</string>
+    <string name="name_of_learnkarte3">MA2</string>
+    <string name="name_of_creator1">Ersteller Jens</string>
+    <string name="name_of_creator2">Ersteller Chris</string>
+    <string name="name_of_creator3">Ersteller Sören</string>
+    <string name="duration_of_lernkarte1">Dauer der Lerneinheit: 30 Minuten</string>
+    <string name="duration_of_lernkarte2">Dauer der Lerneinheit: 45 Minuten</string>
+
+    <string name="googlemapsapikey" templateMergeStrategy="preserve" translatable="false">AIzaSyB5QVtQ0F2yKFTHnqHYSKfU2r_wM-tBQAo</string>
+    <string name="version">119100000</string>
+
+    <!-- Permission Strings -->
+    <string name="permission_rationale_location">Access to the location service is required for this feature.</string>
+    <string name="location_permission_denied">Your Location-Services are probably disabled. You can not use some features.\nPlease go to settings to enable it.</string>
+    <string name="permission_required_toast">Location permission is required for this feature.</string>
+    <string name="please_activate_location_services">Bitte GPS aktivieren</string>
+    <string name="your_location_is_being_searched">Bitte warten, dein Standort wird gesucht</string>
+    <string name="forgot_password">Passwort vergessen?</string>
+    <string name="close_app">Wollen Sie die App wirklich schließen</string>
+    <string name="first_name">Vorname</string>
+    <string name="last_name">Nachname</string>
+
+</resources>
