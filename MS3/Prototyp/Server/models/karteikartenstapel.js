@@ -10,14 +10,15 @@ const StapelSchema = new mongoose.Schema({
   name: String,
   anzahlKarten: Number,
   lerndauer: Number,
-  karteikarten:{
-    id: Number
-  },
+  karteikarten:[{
+    id: Number,
+    laenge: Number
+  }],
   tag: String,
-  kategorie:{
+  kategorie:[{
       studienfach: String,
       modul: String
-  }
+  }]
 });
 
 module.exports = mongoose.model('karteikartenstapel', StapelSchema);

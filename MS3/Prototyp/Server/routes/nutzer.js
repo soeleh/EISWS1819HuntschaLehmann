@@ -1,6 +1,7 @@
 let nutzerModel = require('../models/nutzer.js');
 const router = express.Router();
 
+//_________________________________________
 //Ausgabe aller Nutzer
 router.get('/nutzer', function(req, res){
   nutzerModel.find(function (err, nutzer){
@@ -13,6 +14,7 @@ router.get('/nutzer', function(req, res){
   });
 });
 
+//_________________________________________
 //Ausgabe einer Nutzer nach Name
 router.get('/nutzer/:name', function(req, res){
   nutzerModel.find({name: req.params.name}, function (err, nutzer){
@@ -20,11 +22,12 @@ router.get('/nutzer/:name', function(req, res){
       return res.status(500).json({success: "false"});
     }
     else{
-      res.status(200).json({success:"true", nutzer: nutzer});
+      return res.status(200).json({success:"true", nutzer: nutzer});
     }
   });
 });
 
+//_________________________________________
 //Erstellen eines Nutzers
 router.post('/nutzer', function(req, res){
   if(!req.body){
@@ -37,6 +40,7 @@ router.post('/nutzer', function(req, res){
   }
 });
 
+//_________________________________________
 //Ändern eines Nutzers nach Name
 router.put('/nutzer/:name', function(req, res){
   if(!req.body || !req.params.name){
@@ -54,6 +58,7 @@ router.put('/nutzer/:name', function(req, res){
   }
 });
 
+//_________________________________________
 //Entfernen eines Nutzers nach Name
 router.delete('/nutzer/:name', function(req, res){
   if(!req.params.name){

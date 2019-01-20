@@ -6,15 +6,14 @@ let NutzerSchema = new mongoose.Schema({
     required: true,
     unique: true
   },
-  karteikartenstapel:
-  {
+  karteikartenstapel:[{
     name: String,
     ersteller: String
-  },
-  koordinaten:{
+  }],
+  koordinaten:[{
     langitude: Number,
     longitude: Number
-  }
+  }]
 });
 
 module.exports = mongoose.model('Nutzer', NutzerSchema);
