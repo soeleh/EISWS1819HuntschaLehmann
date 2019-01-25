@@ -42,7 +42,7 @@ public class StartedActivity extends AppCompatActivity{
         TextView nameDerLerneinheit = (TextView) findViewById(R.id.nameDerLerneinheit);
         for(int y=0; y<=karteikartenstapel1.getKarteikartenlistenLaenge(); y++){
             TextView frage = (TextView) findViewById(R.id.aktuelleFrage);
-/*
+            /*
             String stringantwort = karteikartenstapel1.toString()
 
             frage.setText(karteikartenstapel1.get(y));

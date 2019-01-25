@@ -10,7 +10,7 @@ package com.huntschalehmann2018.eis2018calmrunter.Util;
 public class ParsingJSONinActivity {
 }
 
-/*
+
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -163,4 +163,3 @@ private class GetContacts extends AsyncTask<Void, Void, Void> {
 }
 }
 
-*/
